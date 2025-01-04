@@ -13,7 +13,7 @@ A simple web page that allows you to dynamically customize a birthday greeting a
 ### 1. Clone or Download the Repository:
    - **Clone**: Use `git clone` to clone the repository to your local machine:
      ```bash
-     git clone https://github.com/yourusername/happy-birthday-customizer.git
+     git clone https://github.com/0102yevrah/happybdaywebscreen
      ```
    - **Download**: Alternatively, you can download the zip of the repository by clicking on the "Code" button and selecting "Download ZIP".
 
