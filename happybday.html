@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Lilly</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #5A5A5A;
+            font-size: 6rem; /* Large heading to fill top of the page */
+            text-align: center;
+            margin-top: 0; /* Remove unnecessary top margin */
+            margin-bottom: 20px; /* Spacing between heading and content */
+        }
+        .content {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            font-size: 2rem; /* Footer remains large and readable */
+        }
+
+        .name-input-container, .footer-input-container {
+            display: none; /* Hidden initially */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Name Input Section (Initially Hidden) -->
+    <div class="name-input-container" id="nameInputContainer">
+        <label for="nameInput" style="font-size: 1.5rem;">Enter Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter your name" style="font-size: 1.5rem; padding: 5px 10px;">
+        <button onclick="changeName()" style="font-size: 1.5rem; padding: 5px 20px; cursor: pointer;">Submit</button>
+    </div>
+
+    <!-- Footer Input Section (Initially Hidden) -->
+    <div class="footer-input-container" id="footerInputContainer">
+        <label for="footerInput" style="font-size: 1.5rem;">Enter Footer Text:</label>
+        <input type="text" id="footerInput" placeholder="Enter footer text" style="font-size: 1.5rem; padding: 5px 10px;">
+        <button onclick="changeFooter()" style="font-size: 1.5rem; padding: 5px 20px; cursor: pointer;">Submit</button>
+    </div>
+
+    <!-- Dynamic Heading (Starts with an empty name) -->
+    <h1 id="dynamicHeading">Happy Birthday !</h1>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- No more ASCII art -->
+    </div>
+
+    <!-- Dynamic Footer -->
+    <div class="footer" id="dynamicFooter">
+        For those who just got here, don't forget to put your registration plate in at the bar!
+    </div>
+
+    <script>
+        let typedText = '';  // Variable to store the typed text
+
+        // Listen for any key press on the entire page
+        document.body.addEventListener('keypress', function(event) {
+            typedText += event.key;  // Add the typed key to the variable
+
+            // Check if the typed text matches the phrase to toggle name input
+            if (typedText.toLowerCase().endsWith("change name")) {
+                toggleVisibility('nameInputContainer');
+            }
+
+            // Check if the typed text matches the phrase to toggle footer input
+            if (typedText.toLowerCase().endsWith("change footer")) {
+                toggleVisibility('footerInputContainer');
+            }
+        });
+
+        // Function to toggle visibility of the input sections
+        function toggleVisibility(inputId) {
+            var inputContainer = document.getElementById(inputId);
+            if (inputContainer.style.display === 'block') {
+                // If the container is already visible, hide it
+                inputContainer.style.display = 'none';
+            } else {
+                // If the container is hidden, show it
+                inputContainer.style.display = 'block';
+            }
+        }
+
+        // Function to change the name and update the heading
+        function changeName() {
+            var name = document.getElementById('nameInput').value;
+            if (name) {
+                // Update the heading text with the new name
+                document.getElementById('dynamicHeading').textContent = 'Happy Birthday ' + name + '!';
+            } else {
+                alert('Please enter a name!');
+            }
+        }
+
+        // Function to change the footer text dynamically
+        function changeFooter() {
+            var footerText = document.getElementById('footerInput').value;
+            if (footerText) {
+                // Update the footer text
+                document.getElementById('dynamicFooter').textContent = footerText;
+            } else {
+                alert('Please enter footer text!');
+            }
+        }
+    </script>
+
+</body>
+</html>
